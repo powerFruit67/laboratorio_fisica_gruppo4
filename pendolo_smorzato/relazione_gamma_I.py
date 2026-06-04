@@ -3,7 +3,7 @@ from scipy import optimize, signal
 import matplotlib.pyplot as mp
 from matplotlib.ticker import MultipleLocator, AutoMinorLocator
 
-corrente, gamma1 = np.loadtxt("./lambda.csv", delimiter=";", unpack=True, skiprows=1)
+corrente, gamma1 = np.loadtxt("./gamma.csv", delimiter=";", unpack=True, skiprows=1)
 
 # grafico senza tendenza
 fig, ax = mp.subplots()
