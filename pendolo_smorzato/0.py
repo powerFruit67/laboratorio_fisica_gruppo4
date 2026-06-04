@@ -51,7 +51,7 @@ ax2.set_xticklabels(ticklabel)
 ax2.xaxis.set_minor_locator(MultipleLocator(1.25))
 ax2.grid(which="major", axis="x", linewidth=1, alpha=0.7)
 ax2.grid(which="minor", axis="x", linewidth=0.5, alpha=0.5)
-ax.axhline(0, c="k", lw=0.5)
+ax2.axhline(0, c="k", lw=0.5)
 ax2.errorbar(
     tempo,
     teta,
