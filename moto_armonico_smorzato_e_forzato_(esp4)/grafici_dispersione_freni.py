@@ -1,0 +1,36 @@
+import numpy as np
+from scipy import optimize, signal
+import matplotlib.pyplot as mp
+from matplotlib.ticker import MultipleLocator, AutoMinorLocator
+
+omega, A = np.loadtxt("./w_A_freni.csv", delimiter=";", unpack=True, skiprows=1)
+fig, ax = mp.subplots()
+ax.set_title(rf"$\omega$ - A", fontsize=16, pad=16)
+ax.set_xlabel("OMEGA (rad/s)", fontsize=11)
+ax.set_ylabel("AMPIEZZA (deg)", fontsize=11)
+ax.set_xlim(2, 5)
+ax.xaxis.set_major_locator(MultipleLocator(0.5))
+ax.xaxis.set_minor_locator(MultipleLocator(0.25))
+ax.yaxis.set_major_locator(MultipleLocator(0.25))
+ax.yaxis.set_minor_locator(MultipleLocator(0.125))
+ax.grid(which="major", axis="x", linewidth=1, alpha=0.7)
+ax.grid(which="minor", axis="x", linewidth=0.5, alpha=0.5)
+ax.grid(which="major", axis="y", linewidth=1, alpha=0.7)
+ax.grid(which="minor", axis="y", linewidth=0.5, alpha=0.5)
+ax.errorbar(omega, A, ls="-", lw=1.5, c="r", marker="o", ms=3, mfc="r", mec="r")
+
+t, A2 = np.loadtxt("./continuo_freni.csv", delimiter=";", unpack=True, skiprows=1)
+fig2, ax2 = mp.subplots()
+ax2.set_title(rf"t - A", fontsize=16, pad=16)
+ax2.set_xlabel("TEMPO (s)", fontsize=11)
+ax2.set_ylabel("AMPIEZZA (deg)", fontsize=11)
+ax2.xaxis.set_major_locator(MultipleLocator(2))
+ax2.xaxis.set_minor_locator(MultipleLocator(1))
+ax2.yaxis.set_major_locator(MultipleLocator(1))
+ax2.yaxis.set_minor_locator(MultipleLocator(0.5))
+ax2.grid(which="major", axis="x", linewidth=1, alpha=0.7)
+ax2.grid(which="minor", axis="x", linewidth=0.5, alpha=0.5)
+ax2.grid(which="major", axis="y", linewidth=1, alpha=0.7)
+ax2.grid(which="minor", axis="y", linewidth=0.5, alpha=0.5)
+ax2.errorbar(t, A2, ls="-", lw=1.5, c="g", marker="o", ms=3, mfc="g", mec="g")
+mp.show()
